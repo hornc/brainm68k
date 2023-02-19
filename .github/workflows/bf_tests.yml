@@ -1,0 +1,30 @@
+name: bf tests 
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        bfsource: [m68kd.bf, src/hello.b, src/div10.b, src/atoi.b]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install amitools
+      - name: Get bfc and original source examples
+        run: |
+          wget http://main.aminet.net/dev/lang/brainfuck-2.lha
+          file-roller --extract-to=. brainfuck-2.lha
+      - name: Compile m68k executables
+        run: |
+          vamos bfc < ${{ bfsource }} > ${{ bfsource }}.exe
+      - name: Test that executables compile back to expected source
+        run: |
+           diff <(vamos m68kd.bf.exe < ${{ bfsource }}.exe | sed 's/+-]/]/g') <(cat ${{ bfsource }} | tr -dc "+-<>[],.")
