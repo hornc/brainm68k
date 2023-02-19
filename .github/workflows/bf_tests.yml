@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-        BFSOURCE: m68kd.bf src/hello.b src/div10.b src/atoi.b
+        BFSOURCE: m68kd.bf gengen.bf src/hello.b src/div10.b src/atoi.b
 
     steps:
       - uses: actions/checkout@v3
