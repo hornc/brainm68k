@@ -1,5 +1,5 @@
-# m68kd.bf Decompiler
-# 'bfc' produced Motorolla 68000 AmigaOS 2.0 executable back to bf code.
+# m68kd bf Decompiler
+# 'bfc' produced Motorolla 68000 AmigaOS 2 0 executable back to bf code
 
 +++++[>++++++++++<-]>
 [->,<]  # Skip 50 byte header
