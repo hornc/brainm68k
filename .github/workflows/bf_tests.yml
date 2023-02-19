@@ -24,7 +24,7 @@ jobs:
           file-roller --extract-to=. brainfuck-2.lha
       - name: Compile m68k executables
         run: |
-          vamos bfc < ${{ bfsource }} > ${{ bfsource }}.exe
+          vamos bfc < ${{ matrix.bfsource }} > ${{ matrix.bfsource }}.exe
       - name: Test that executables compile back to expected source
         run: |
-           diff <(vamos m68kd.bf.exe < ${{ bfsource }}.exe | sed 's/+-]/]/g') <(cat ${{ bfsource }} | tr -dc "+-<>[],.")
+           diff <(vamos m68kd.bf.exe < ${{ matrix.bfsource }}.exe | sed 's/+-]/]/g') <(cat ${{ matrix.bfsource }} | tr -dc "+-<>[],.")
