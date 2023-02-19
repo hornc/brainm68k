@@ -3,8 +3,7 @@ name: bf tests
 on: [push]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
     env:
         BFSOURCE: m68kd.bf src/hello.b src/div10.b src/atoi.b
@@ -13,7 +12,7 @@ jobs:
       - uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: lhasa
-          version: 0.3 
+          version: 0.3
       - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -31,5 +30,6 @@ jobs:
       - name: Test that executables compile back to expected source
         run: |
           for BF in $BFSOURCE; do
-            diff <(vamos m68kd.bf.exe < ${BF}.exe | sed 's/+-]/]/g') <(cat $BF ) # deliberate break | tr -dc "+<>[],.-")
+            do printf "\n=====\n\n$BF:\n  "
+            diff -s <(vamos m68kd.bf.exe < ${BF}.exe | sed 's/+-]/]/g') <(cat $BF | tr -dc "+<>[],.-")
           done
