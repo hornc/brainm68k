@@ -27,7 +27,7 @@ jobs:
       - name: Compile m68k executables
         run: |
           for BF in $BFSOURCE; do vamos bfc < $BF > ${BF}.exe; done
-      - name: Test that executables compile back to expected source
+      - name: Test that executables decompile back to expected source
         run: |
           for BF in $BFSOURCE; do
             printf "\n=====\n\n$BF:\n  "
