@@ -6,9 +6,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        bfsource: [m68kd.bf, src/hello.b, src/div10.b, src/atoi.b]
+    env:
+        BFSOURCE: m68kd.bf src/hello.b src/div10.b src/atoi.b
 
     steps:
       - uses: awalsh128/cache-apt-pkgs-action@latest
@@ -27,7 +26,9 @@ jobs:
           lha -x brainfuck-2.lha
       - name: Compile m68k executables
         run: |
-          vamos bfc < ${{ matrix.bfsource }} > ${{ matrix.bfsource }}.exe
+          for BF in $BFSOURCE; do vamos bfc < $BF > ${BF}.exe; done
       - name: Test that executables compile back to expected source
         run: |
-           diff <(vamos m68kd.bf.exe < ${{ matrix.bfsource }}.exe | sed 's/+-]/]/g') <(cat ${{ matrix.bfsource }} | tr -dc "+-<>[],.")
+          for BF in $BFSOURCE; do
+            diff <(vamos m68kd.bf.exe < ${BF}.exe | sed 's/+-]/]/g') <(cat $BF | tr -dc "+<>[],.-")
+          done
