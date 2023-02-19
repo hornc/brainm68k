@@ -11,6 +11,9 @@ jobs:
         bfsource: [m68kd.bf, src/hello.b, src/div10.b, src/atoi.b]
 
     steps:
+      - uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: lhasa
       - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -21,7 +24,7 @@ jobs:
       - name: Get bfc and original source examples
         run: |
           wget http://main.aminet.net/dev/lang/brainfuck-2.lha
-          file-roller --extract-to=. brainfuck-2.lha
+          lha -x brainfuck-2.lha
       - name: Compile m68k executables
         run: |
           vamos bfc < ${{ matrix.bfsource }} > ${{ matrix.bfsource }}.exe
