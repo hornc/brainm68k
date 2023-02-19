@@ -30,5 +30,5 @@ jobs:
       - name: Test that executables compile back to expected source
         run: |
           for BF in $BFSOURCE; do
-            diff <(vamos m68kd.bf.exe < ${BF}.exe | sed 's/+-]/]/g') <(cat $BF | tr -dc "+<>[],.-")
+            diff <(vamos m68kd.bf.exe < ${BF}.exe | sed 's/+-]/]/g') <(cat $BF ) # deliberate break | tr -dc "+<>[],.-")
           done
