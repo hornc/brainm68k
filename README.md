@@ -1,5 +1,7 @@
 # brainm68k
 
+[![bf tests](https://github.com/hornc/brainm68k/actions/workflows/bf_tests.yml/badge.svg)](https://github.com/hornc/brainm68k/actions/workflows/bf_tests.yml)
+
 In 1993 Urban Müller invented a Turing tarpit programming language for which he created a tiny 240 byte compiler for the Amiga.
 
 This repo collects some basic utilities, written in bf, for working with the original `bfc` compiler and its compiled output.
