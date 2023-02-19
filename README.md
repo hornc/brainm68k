@@ -11,5 +11,5 @@ Assumes 8-bit wrapping cells. Tested using Urban Müller's 240 byte bf compiler 
 
 
 ### External resources
-* [Original AmiNet bf distribution.](http://main.aminet.net/dev/lang/brainfuck-2.lha)
+* [Original AmiNet bf distribution.](https://aminet.net/package/dev/lang/brainfuck-2)
 * [AmiTools](https://github.com/cnvogelg/amitools), Python based tools for running AmigaOS executables on other platforms.
