@@ -9,11 +9,11 @@ jobs:
         BFSOURCE: m68kd.bf src/hello.b src/div10.b src/atoi.b
 
     steps:
+      - uses: actions/checkout@v3
       - uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: lhasa
-          version: 0.3
-      - uses: actions/checkout@v3
+          version: 1.0
       - name: Set up Python
         uses: actions/setup-python@v4
       - name: Install dependencies
