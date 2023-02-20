@@ -38,12 +38,14 @@
     >+<
     [ [-]>-< ]> # Not an Amiga EXE 0x03 0x??
 
-    # This IS an Amiga EXE (ptr now at 5th cell)
+    # This IS an Amiga EXE (ptr now at 6th cell)
     [
-      [-]<[-]<[-]  # clear cells and move back to 3rd cell
-      ..+++.---
-      -------
-      ------.      # 000003F3 magic cookie
+      [-]<[-]<[-]<[-]  # clear cells and move back to 3rd cell
+      <+++..---...+++.-<.++>.<.-->
+      .......
+      ......
+      +.---
+      <.++>.<.-->+>  # 000003F3 magic cookie
 
 
 
