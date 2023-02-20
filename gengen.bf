@@ -19,9 +19,9 @@
 # Probably TEXT
 [
   [[<.>-]<+++.---<.>++.--<++.-->>,]
-->
+>-<
 ]
-<
+>
 
 # Possibly Amiga Hunk
 +
@@ -38,11 +38,17 @@
     >+<
     [ [-]>-< ]> # Not an Amiga EXE 0x03 0x??
 
-    # This IS an Amiga EXE
-    [ >
-      ----[---->+<]>++.++++++++++++.----.--.------.-[-->+<]>.++[->++<]>+.[->+++++<]>-.+[----->+<]>.-[-->+<]>-.
-      [-]
+    # This IS an Amiga EXE (ptr now at 5th cell)
+    [
+      [-]<[-]<[-]  # clear cells and move back to 3rd cell
+      ..+++.---
+      -------
+      ------.      # 000003F3 magic cookie
 
+
+
+    # All we need to do from here is end on a 0 cell with a 0 to the right
+      [-]
     ]
 
   ]
