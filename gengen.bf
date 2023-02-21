@@ -45,11 +45,11 @@
       .......
       ......
       +.---
-      <.++>.<.-->+>  # 000003F3 magic cookie
+      <.++>.<.-->>  # 000003F3 magic cookie
+      # Generate rest of the Amiga exe and halt on 0xF2 0x00
+      <<.>.>  # Check constants
 
-
-
-    # All we need to do from here is end on a 0 cell with a 0 to the right
+      # All we need to do from here is end on a 0 cell with a 0 to the right
       [-]
     ]
 
