@@ -47,10 +47,28 @@
       +.---
       <.++>.<.-->>  # 000003F3 magic cookie
       # Generate rest of the Amiga exe and halt on 0xF2 0x00
-      <<.>.>  # Check constants
+      >,>>+  # read next byte
+      [
+        [-]<<
+        # check if F2
+        +++++++
+        +++++++
+        >+<  # set is_F2
+        [>[-]<[<+>-]] # if not F2 clear is_F2 and copy input 1 cell left
+        <
+        -------
+        -------  # readjust input after test
 
+        [>[-]+<<.>-]  # set not_null bit and output pluses if not null
+        <+++.--->     # always output dot
+        ++++++++++.[-] # Newline
+        >[<<<.>++.--<++.-->>>[-]]  # output clear cell code if not null
+        >>+     # set keep_reading
+        <<<,    # read next byte
+        >[-]>[[-]>[-]<<<[>>>[-]+<<+<-]>>] # check is_F2
+        <<[->+<]>>>
+      ]
       # All we need to do from here is end on a 0 cell with a 0 to the right
-      [-]
     ]
 
   ]
