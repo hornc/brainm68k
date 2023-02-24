@@ -30,13 +30,13 @@
   ,, # get 3rd byte
   ---
   >+<
-  [ [-]>-< ]> # Not Amiga EXE Skip next test
+  [ [-]>-< ]>  # Not Amiga EXE Skip next test
   [
     , # Get 4th byte
-    -------
-    ------
+    +++++++
+    ++++++
     >+<
-    [ [-]>-< ]> # Not an Amiga EXE 0x03 0x??
+    [ [-]>-< ]>  # Not an Amiga EXE 0x03 0x??
 
     # This IS an Amiga EXE (ptr now at 6th cell)
     [
