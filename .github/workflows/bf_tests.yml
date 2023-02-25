@@ -31,3 +31,11 @@ jobs:
             printf "\n=====\n\n$BF:\n  "
             diff -s <(vamos m68kd.bf.exe < ${BF}.exe | sed 's/+-]/]/g') <(cat $BF | tr -dc "+<>[],.-")
           done
+      - name: Test that the invalid magic cookies are recognised as such:
+        run: |
+          vamos gengen.bf.exe < data/bad_cookie_03F4.bin | grep "ERROR: Input != text|Amiga EXE"
+          vamos gengen.bf.exe < data/bad_cookie_04F3.bin | grep "ERROR: Input != text|Amiga EXE"
+      - name: Test that an Amiga OS executable does not error and is converted. Also bfc gen exe = 65532 lines.
+        run: |
+          vamos gengen.bf.exe < gengen.bf.exe | grep -v "ERROR: Input != text|Amiga EXE"
+          test $(vamos gengen.bf.exe < gengen.bf.exe | wc -l) = 65532
