@@ -27,20 +27,19 @@
 +
 >>+<<
 [
-  ,, # get 3rd byte
+  ,,  # get 3rd byte
   ---
   >+<
   [ [-]>-< ]>  # Not Amiga EXE Skip next test
   [
-    , # Get 4th byte
+    <,  # Get 4th byte
     +++++++
     ++++++
-    >+<
     [ [-]>-< ]>  # Not an Amiga EXE 0x03 0x??
 
-    # This IS an Amiga EXE (ptr now at 6th cell)
+    # This IS an Amiga EXE (ptr now at 5th cell)
     [
-      [-]<[-]<[-]<[-]  # clear cells and move back to 3rd cell
+      [-]<[-]<[-]  # clear cells and move back to 3rd cell
       <+++..---...+++.-<.++>.<.-->
       .......
       ......
