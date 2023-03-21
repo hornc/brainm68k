@@ -4,7 +4,7 @@
 # * An Amiga OS executable
 
 # It's possible some Amiga executables will not be handled fully
-# At least the subset consiting of bfc and all its possible outputs
+# At least the subset consisting of bfc and all possible outputs
 # are handled correctly
 # Amiga EXE mode terminates parsing on (0x03) 0xF2 0x00
 # (HUNK_END followed by NULL)
@@ -69,9 +69,7 @@
       ]
       # All we need to do from here is end on a 0 cell with a 0 to the right
     ]
-
   ]
-
 ]
 
 # ERROR: Input != text
