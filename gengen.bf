@@ -40,7 +40,10 @@
     # This IS an Amiga EXE (ptr now at 5th cell)
     [
       [-]<[-]<[-]  # clear cells and move back to 3rd cell
-      <+++..---...+++.-<.++>.<.-->
+      # alignment padding to support bfc gen overlaping tape
+      ----[>+<----]>-...<[-]
+      <<.++>++.<.-->
+      +..---...+++.-<.++>.<.-->
       .......
       ......
       +.---
