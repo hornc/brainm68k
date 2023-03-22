@@ -41,7 +41,7 @@
     [
       [-]<[-]<[-]  # clear cells and move back to 3rd cell
       # alignment padding to support bfc gen overlaping tape
-      ----[>+<----]>-..<[-]
+      ----[>+<----]>-...<[-]
       <<.++>++.<.-->
       +..---...+++.-<.++>.<.-->
       .......
