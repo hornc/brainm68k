@@ -39,3 +39,14 @@ jobs:
         run: |
           vamos gengen.bf.exe < gengen.bf.exe | grep -v "ERROR: Input != text|Amiga EXE"
           test $(vamos gengen.bf.exe < gengen.bf.exe | grep -oF "." | wc -l) = 65536
+      - name: Test gengen.bf can produce a correct bfc generator
+        run: |
+          vamos gengen.bf.exe < bfc > gen_bfc.bf
+          vamos bfc < gen_bfc.bf > gen_bfc.bf.exe
+          vamos gen_bfc.bf.exe > bfc2
+          diff -s bfc2 bfc
+      - name: Use the generated bfc2 to compile another version of itself, and compare
+        run: |
+          vamos bfc2 < gen_bfc.bf > gen_bfc3.exe
+          vamos gen_bfc3.exe > bfc3
+          diff3 bfc bfc2 bfc3
